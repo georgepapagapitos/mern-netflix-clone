@@ -3,7 +3,7 @@ import { InfoOutlined, PlayArrow } from '@material-ui/icons';
 
 const genres = [{ name: "Adventure" }, { name: "Comedy" }, { name: "Crime" }, { name: "Fantasy" }, { name: "Historical" }, { name: "Horror" }, { name: "Romance" }, { name: "Sci-Fi" }, { name: "Thriller" }, { name: "Western" }, { name: "Animation" }, { name: "Drama" }, { name: "Documentary" }];
 
-const Featured = ({ type }) => {
+export default function Featured({ type }) {
   return (
     <div className="featured">
       {type && (
@@ -38,5 +38,3 @@ const Featured = ({ type }) => {
     </div>
   );
 }
-
-export default Featured;

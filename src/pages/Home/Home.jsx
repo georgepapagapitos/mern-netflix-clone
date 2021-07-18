@@ -3,7 +3,7 @@ import List from '../../components/List/List';
 import NavBar from '../../components/NavBar/NavBar';
 import './Home.scss';
 
-const Home = () => {
+export default function Home() {
   return (
     <div className="home">
       <NavBar />
@@ -16,5 +16,3 @@ const Home = () => {
     </div>
   );
 }
-
-export default Home;

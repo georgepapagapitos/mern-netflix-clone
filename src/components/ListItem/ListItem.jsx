@@ -1,11 +1,9 @@
 import "./ListItem.scss";
 
-const ListItem = () => {
+export default function ListItem() {
   return (
     <div className="list-item">
       item
     </div>
   );
 }
-
-export default ListItem;
