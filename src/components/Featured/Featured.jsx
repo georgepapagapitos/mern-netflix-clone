@@ -1,6 +1,8 @@
 import './Featured.scss';
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
 
+const genres = [{ name: "Adventure" }, { name: "Comedy" }, { name: "Crime" }, { name: "Fantasy" }, { name: "Historical" }, { name: "Horror" }, { name: "Romance" }, { name: "Sci-Fi" }, { name: "Thriller" }, { name: "Western" }, { name: "Animation" }, { name: "Drama" }, { name: "Documentary" }];
+
 const Featured = ({ type }) => {
   return (
     <div className="featured">
@@ -9,19 +11,9 @@ const Featured = ({ type }) => {
           <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
-            <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Sci-fi</option>
-            <option value="thriller">Thriller</option>
-            <option value="western">Western</option>
-            <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
+            {genres.map(genre => (
+              <option key={genre.name} value={genre.name.toLowerCase()}>{genre.name}</option>
+            ))}
           </select>
         </div>
       )}
