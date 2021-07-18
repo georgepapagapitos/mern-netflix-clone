@@ -1,7 +1,12 @@
-export default function App() {
+import './App.scss';
+import Home from './components/Home/Home';
+
+const App = () => {
   return (
-    <div>
-      Hello, world!
-    </div>
+    <h1>
+      <Home />
+    </h1>
   );
 }
+
+export default App;
