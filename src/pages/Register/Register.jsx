@@ -1,8 +1,7 @@
-import { ArrowForwardIosOutlined } from "@material-ui/icons";
 import { useRef, useState } from "react";
 import "./Register.scss";
 
-const Register = () => {
+export default function Register() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,5 +43,3 @@ const Register = () => {
     </div>
   );
 }
-
-export default Register;

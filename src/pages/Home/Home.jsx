@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="home">
       <NavBar />
-      <Featured type="series" />
+      <Featured type="movie" />
       <List />
       <List />
       <List />
