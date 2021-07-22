@@ -1,27 +1,40 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
-import Featured from './components/Featured/Featured';
+
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Watch from './pages/Watch/Watch';
 
 export default function App() {
+
+  const user = true;
+
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          {user ? <Home /> : <Redirect to="/register" />}
         </Route>
-        <Route path="/movies">
-          <Home type="movies" />
+        <Route path="/register">
+          {!user ? <Register /> : <Redirect to="/" />}
         </Route>
-        <Route path="/series">
-          <Home type="series" />
+        <Route path="/login">
+          {!user ? <Login /> : <Redirect to="/" />}
         </Route>
-        <Route path="/watch">
-          <Watch />
-        </Route>
+        {user && (
+          <>
+            <Route path="/movies">
+              <Home type="movies" />
+            </Route>
+            <Route path="/series">
+              <Home type="series" />
+            </Route>
+            <Route path="/watch">
+              <Watch />
+            </Route>
+          </>
+        )}
       </Switch>
     </Router>
   );
