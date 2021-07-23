@@ -1,9 +1,30 @@
 import './Featured.scss';
+import axios from 'axios';
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
+import { useEffect, useState } from 'react';
 
 const genres = [{ name: "Adventure" }, { name: "Comedy" }, { name: "Crime" }, { name: "Fantasy" }, { name: "Historical" }, { name: "Horror" }, { name: "Romance" }, { name: "Sci-Fi" }, { name: "Thriller" }, { name: "Western" }, { name: "Animation" }, { name: "Drama" }, { name: "Documentary" }];
 
 export default function Featured({ type }) {
+
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const response = await axios.get(`/api/movies/random?type=${type}`, {
+          headers: {
+            token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjg0YWIwOTM0YTY0NzY2YzhkMWE3MyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk3NzA3NywiZXhwIjoxNjI3NDA5MDc3fQ.273IUK9b-83xXAp9QzFfqojswFYziHTh3wlOU1ZA4g8`
+          }
+        });
+        setContent(response.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getRandomContent();
+  }, [type]);
+
   return (
     <div className="featured">
       {type && (
@@ -17,13 +38,13 @@ export default function Featured({ type }) {
           </select>
         </div>
       )}
-      <img src="https://cracklord.com/content/images/size/w2000/2017/09/neo-bullets1.png" alt="featured-movie" />
+      <img src={content.img} alt="featured-movie" />
       <div className="info">
         <img
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
+          src={content.imgTitle}
           alt="info"
         />
-        <span className="desc">Minim minim do aliquip eiusmod. Et eu pariatur veniam excepteur incididunt ex anim reprehenderit. Excepteur laboris adipisicing ut sint duis consectetur cillum reprehenderit reprehenderit ea incididunt.</span>
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow />
