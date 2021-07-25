@@ -8,7 +8,7 @@ import Watch from './pages/Watch/Watch';
 
 export default function App() {
 
-  const user = true;
+  const user = false;
 
   return (
     <Router>
